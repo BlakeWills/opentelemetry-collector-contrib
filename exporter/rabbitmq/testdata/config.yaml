@@ -1,0 +1,8 @@
+rabbitmq:
+
+rabbitmq/1:
+  connection_string: ampq://guest:guest@localhost
+  virtual_host: /
+  exchange:
+    name: otel-logs-exchange
+    type: direct
