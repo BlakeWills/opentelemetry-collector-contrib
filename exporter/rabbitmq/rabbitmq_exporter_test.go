@@ -41,49 +41,6 @@ func getExpectedJsonMessage(t *testing.T, marshaler plog.JSONMarshaler, logs plo
 	return string(d)
 }
 
-//func TestLogsDataPusher(t *testing.T) {
-//	lr := testdata.GenerateLogsOneLogRecord()
-//	marshaler := &plog.JSONMarshaler{}
-//
-//	type args struct {
-//		ld plog.Logs
-//	}
-//	tests := []struct {
-//		name string
-//		args args
-//		want string
-//	}{
-//		{
-//			name: "message",
-//			args: args{
-//				ld: lr,
-//			},
-//			want: getExpectedJsonMessage(t, *marshaler, lr),
-//		},
-//	}
-//	for _, tt := range tests {
-//		t.Run(tt.name, func(t *testing.T) {
-//			ch := &MockAmpqChannel{}
-//
-//			exp := &rabbitmqLogsExporter{
-//				connection:   nil,
-//				channel:      ch,
-//				exchangeName: "otel-test-logs-exchange",
-//				marshaler:    marshaler,
-//			}
-//
-//			err := exp.logsDataPusher(context.Background(), tt.args.ld)
-//			require.NoError(t, err)
-//
-//			assert.Len(t, ch.PublishedMessages, 1)
-//
-//			pubMsg := ch.PublishedMessages[0]
-//			pubMsgBodyAsStr := string(pubMsg.MessageBody)
-//			assert.Equal(t, tt.want, pubMsgBodyAsStr)
-//		})
-//	}
-//}
-
 func TestLogsDataPublisher(t *testing.T) {
 	lr := testdata.GenerateLogsOneLogRecord()
 	marshaler := &plog.JSONMarshaler{}
